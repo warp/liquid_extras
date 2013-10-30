@@ -6,7 +6,7 @@ module Locomotive
       module ServiceHelper
 
         def uri_for_api(service, path)
-          WestfieldUri::Service.uri_for_api(service, 'http', 'master', path)
+          WestfieldUri::Service.uri_for_api(service, 'http', 'master', path, host: :external)
         end
 
       end
