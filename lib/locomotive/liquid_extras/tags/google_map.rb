@@ -28,7 +28,7 @@ module Locomotive
         def render_params(context)
           {}.tap do |options|
             @params.each do |key, value|
-              options[key] = Liquid::Variable.new(value).render(context)
+              options[key] = ::Liquid::Variable.new(value).render(context)
             end
           end
         end
@@ -45,8 +45,6 @@ module Locomotive
         def google_static_maps_url(options)
           # Decode the key
           key = Base64.urlsafe_decode64 ENV['GOOGLE_MAPS_BUSINESS_KEY']
-
-          image = options[:scale] == 1 ? 'icon_map_pointer.png' : 'icon_map_pointer@2x.png'
 
           # Build up the url to sign
           to_sign = '/maps/api/staticmap?' + {

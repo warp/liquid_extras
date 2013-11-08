@@ -4,10 +4,15 @@ module Locomotive
       module Header
 
         def header(input)
-          header = ENV[input] || @context.registers[:request].env[input]
+          header = ENV[input] || env[input]
           header && header == 'true'
         end
 
+      private
+
+        def env
+          (@context.registers[:controller] || @context.registers[:request]).env
+        end
       end
 
       ::Liquid::Template.register_filter(Header)
