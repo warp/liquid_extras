@@ -12,7 +12,7 @@ module Locomotive
           end
         end
 
-        def sample!(input)
+        def sample_unique(input)
           input = input.all if input.respond_to?(:all) # Content type collection
           input.delete input.sample
         end

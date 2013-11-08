@@ -11,11 +11,11 @@ describe Locomotive::LiquidExtras::Filters::Sample do
     end
   end
 
-  describe '#sample!' do
+  describe '#sample_unique' do
     it 'return a unique sample of an array' do
       array = ["Foo", "Bar", "Locomotive"]
       set = Set.new()
-      3.times { set << sample!(array) }
+      3.times { set << sample_unique(array) }
       set.size.should eql 3
     end
   end
