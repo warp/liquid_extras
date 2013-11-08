@@ -4,7 +4,7 @@ module Locomotive
       module Header
 
         def header(input)
-          header = @context.registers[:request].env[input]
+          header = ENV[input] || @context.registers[:request].env[input]
           header && header == 'true'
         end
 
