@@ -9,7 +9,15 @@ module Locomotive
         end
 
         def is_mobile?(context)
-          context.registers[:request].host.to_s.split('.').first == 'm' || !!(ENV['FORCE_MOBILE'] =~ /true/i)
+            request(context).host.to_s.split('.').first == 'm' || !!(ENV['FORCE_MOBILE'] =~ /true/i)
+        end
+
+        def request(context)
+          if context.registers.has_key? :controller
+            context.registers[:controller].request
+          else
+            context.registers[:request]
+          end
         end
       end
 
